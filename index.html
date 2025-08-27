@@ -54,10 +54,12 @@
         }
         
         .calc-display {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.8);
             height: 80px;
             font-size: 2rem;
             font-weight: 600;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         #animationBox {
@@ -65,6 +67,37 @@
             height: 100px;
             background: var(--primary);
             border-radius: 15px;
+        }
+
+        /* Code Example Styling */
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .code-title {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 8px 15px;
+            margin: -20px -20px 15px -20px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -204,6 +237,39 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- HTML Code Example -->
+                    <div class="code-example mt-4">
+                        <div class="code-title">HTML Example</div>
+                        <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My First Webpage&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="#home"&gt;Home&lt;/a&gt;
+            &lt;a href="#about"&gt;About&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;section id="home"&gt;
+            &lt;h2&gt;About Me&lt;/h2&gt;
+            &lt;p&gt;I'm learning web development!&lt;/p&gt;
+            &lt;img src="profile.jpg" alt="Profile"&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;© 2024 My Website&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </div>
                 </div>
             </div>
         </div>
@@ -246,6 +312,49 @@
                         <div class="col-md-6 d-flex align-items-center justify-content-center">
                             <div id="animationBox"></div>
                         </div>
+                    </div>
+
+                    <!-- CSS Code Example -->
+                    <div class="code-example mt-4">
+                        <div class="code-title">CSS Example</div>
+                        <pre>/* CSS Styling Example */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}</pre>
                     </div>
                 </div>
             </div>
@@ -299,6 +408,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Bootstrap Code Example -->
+                    <div class="code-example mt-4">
+                        <div class="code-title">Bootstrap Example</div>
+                        <pre>&lt;!-- Bootstrap Grid System --&gt;
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-6 col-lg-4"&gt;
+            &lt;div class="card"&gt;
+                &lt;div class="card-body"&gt;
+                    &lt;h5 class="card-title"&gt;Card Title&lt;/h5&gt;
+                    &lt;p class="card-text"&gt;
+                        Some quick example text to build on the card title.
+                    &lt;/p&gt;
+                    &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-6 col-lg-8"&gt;
+            &lt;div class="alert alert-success" role="alert"&gt;
+                A simple success alert—check it out!
+            &lt;/div&gt;
+            &lt;button type="button" class="btn btn-primary"&gt;
+                Primary Button
+            &lt;/button&gt;
+            &lt;span class="badge bg-secondary"&gt;New&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                    </div>
                 </div>
             </div>
         </div>
@@ -341,15 +480,71 @@
                                 <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('6')">6</button></div>
                                 <div class="col-3"><button class="btn calc-btn w-100" onclick="inputOperator('+')">+</button></div>
                                 
-                                <div class="col-6"><button class="btn calc-btn w-100" onclick="inputNumber('0')">0</button></div>
-                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('.')">.</button></div>
-                                <div class="col-3"><button class="btn calc-btn w-100 bg-primary" onclick="calculate()">=</button></div>
-                                
                                 <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('1')">1</button></div>
                                 <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('2')">2</button></div>
                                 <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('3')">3</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100 bg-primary" onclick="calculate()" style="grid-row: span 2; height: 126px;">=</button></div>
+                                
+                                <div class="col-6"><button class="btn calc-btn w-100" onclick="inputNumber('0')">0</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('.')">.</button></div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- JavaScript Code Example -->
+                    <div class="code-example mt-4">
+                        <div class="code-title">JavaScript Example</div>
+                        <pre>// JavaScript Calculator Example
+let calcDisplay = '0';
+let calcPrevious = null;
+let calcOperation = null;
+let calcWaitingForOperand = false;
+
+function inputNumber(num) {
+    if (calcWaitingForOperand) {
+        calcDisplay = num;
+        calcWaitingForOperand = false;
+    } else {
+        calcDisplay = calcDisplay === '0' ? num : calcDisplay + num;
+    }
+    updateCalcDisplay();
+}
+
+function inputOperator(nextOperator) {
+    const inputValue = parseFloat(calcDisplay);
+    
+    if (calcPrevious === null) {
+        calcPrevious = inputValue;
+    } else if (calcOperation) {
+        const result = performCalculation[calcOperation](calcPrevious, inputValue);
+        calcDisplay = String(result);
+        calcPrevious = result;
+        updateCalcDisplay();
+    }
+    
+    calcWaitingForOperand = true;
+    calcOperation = nextOperator;
+}
+
+const performCalculation = {
+    '/': (prev, next) => prev / next,
+    '*': (prev, next) => prev * next,
+    '+': (prev, next) => prev + next,
+    '-': (prev, next) => prev - next,
+};
+
+function calculate() {
+    const inputValue = parseFloat(calcDisplay);
+    
+    if (calcPrevious !== null && calcOperation) {
+        const result = performCalculation[calcOperation](calcPrevious, inputValue);
+        calcDisplay = String(result);
+        calcPrevious = null;
+        calcOperation = null;
+        calcWaitingForOperand = true;
+        updateCalcDisplay();
+    }
+}</pre>
                     </div>
                 </div>
             </div>
