@@ -1,421 +1,79 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parbin Thapa - Full Stack Developer Portfolio</title>
+    <title>Parbin Thapa - Full Stack Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --dark-bg: #1a1a1a;
-            --light-bg: #f8f9fa;
-            --text-light: #ecf0f1;
-            --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --primary: #6366f1;
+            --dark: #1e293b;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+            background: var(--dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
         }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--secondary-color);
-            border-radius: 4px;
-        }
-
-        .navbar-custom {
-            background: rgba(44, 62, 80, 0.95) !important;
+        
+        .navbar {
+            background: rgba(30, 41, 59, 0.9) !important;
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
         }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--text-light) !important;
-        }
-
-        .nav-link {
-            color: var(--text-light) !important;
-            font-weight: 500;
-            margin: 0 10px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--secondary-color) !important;
-            transform: translateY(-2px);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 50%;
-            background: var(--secondary-color);
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
+        
         .hero {
-            background: var(--gradient-bg);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            animation: float 20s ease-in-out infinite;
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-content {
-            color: white;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: slideInUp 1s ease-out;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: slideInUp 1s ease-out 0.2s both;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.8;
-            animation: slideInUp 1s ease-out 0.4s both;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .btn-hero {
-            background: var(--accent-color);
+        
+        .btn-primary {
+            background: var(--primary);
             border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+        }
+        
+        .calc-btn {
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
-            animation: slideInUp 1s ease-out 0.6s both;
+            font-weight: 600;
         }
-
-        .btn-hero:hover {
-            background: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
-            color: white;
+        
+        .calc-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
-
-        .section-padding {
-            padding: 80px 0;
+        
+        .calc-display {
+            background: rgba(0, 0, 0, 0.5);
+            height: 80px;
+            font-size: 2rem;
+            font-weight: 600;
         }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary-color);
-            border-radius: 2px;
-        }
-
-        .tech-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(52, 152, 219, 0.1);
-            height: 100%;
-        }
-
-        .tech-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            border-color: var(--secondary-color);
-        }
-
-        .tech-card .card-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .tech-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .tech-card p {
-            text-align: justify;
-            margin-bottom: 20px;
-        }
-
-        .interactive-demo {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        .demo-controls {
-            margin-bottom: 15px;
-        }
-
-        .demo-output {
-            background: white;
-            border-radius: 5px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            min-height: 100px;
-        }
-
-        .html-preview {
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            background: white;
-            margin: 15px 0;
-        }
-
-        .css-animation-box {
+        
+        #animationBox {
             width: 100px;
             height: 100px;
-            background: var(--secondary-color);
-            margin: 20px auto;
-            border-radius: 10px;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .css-animation-box:hover {
-            background: var(--accent-color);
-            transform: scale(1.1);
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-30px);
-            }
-            60% {
-                transform: translateY(-15px);
-            }
-        }
-
-        .bootstrap-demo {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 15px 0;
-        }
-
-        .js-calculator {
-            max-width: 300px;
-            margin: 20px auto;
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .calc-display {
-            background: #2c3e50;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            text-align: right;
-            margin-bottom: 15px;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        .calc-buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .calc-btn {
-            padding: 15px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .calc-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .calc-btn.operator {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        .calc-btn.number {
-            background: #ecf0f1;
-            color: #2c3e50;
-        }
-
-        .calc-btn.equals {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .footer {
-            background: var(--primary-color);
-            color: var(--text-light);
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        .footer .social-links {
-            margin-bottom: 20px;
-        }
-
-        .footer .social-links a {
-            color: var(--text-light);
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: all 0.3s ease;
-        }
-
-        .footer .social-links a:hover {
-            color: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .code-example {
-            background: #2d3748;
-            color: #e2e8f0;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            margin: 15px 0;
+            background: var(--primary);
+            border-radius: 15px;
         }
     </style>
 </head>
 <body>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#home">
-                <i class="fas fa-code"></i> Parbin Thapa
-            </a>
+            <a class="navbar-brand fw-bold" href="#">Parbin Thapa</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -432,103 +90,69 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Home Section -->
     <section id="home" class="hero">
-        <div class="container">
+        <div class="container text-center">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="hero-content">
-                        <h1 class="hero-title">Parbin Thapa</h1>
-                        <p class="hero-subtitle">Full Stack Developer</p>
-                        <p class="hero-description">
-                            Passionate about creating innovative web solutions with modern technologies.
-                            Specializing in HTML, CSS, Bootstrap, JavaScript, and full-stack development.
-                        </p>
-                        <a href="#fullstack" class="btn-hero">
-                            <i class="fas fa-rocket"></i> Explore My Work
-                        </a>
-                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Parbin Thapa</h1>
+                    <h2 class="h3 mb-4">Full Stack Developer</h2>
+                    <p class="lead mb-4">
+                        Crafting innovative web solutions with modern technologies. 
+                        Passionate about creating seamless user experiences and robust backend systems.
+                    </p>
+                    <a href="#fullstack" class="btn btn-primary btn-lg">
+                        <i class="fas fa-rocket me-2"></i>Explore My Skills
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Full Stack Development Section -->
-    <section id="fullstack" class="section-padding">
+    <!-- Full Stack Section -->
+    <section id="fullstack" class="py-5">
         <div class="container">
-            <div class="section-title">
-                <h2>What is Full Stack Development?</h2>
-            </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="tech-card">
-                        <div class="card-icon">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <h4>Full Stack Development Explained</h4>
-                        <p>
-                            Full Stack Development refers to the development of both front-end (client-side) and back-end (server-side) 
-                            portions of a web application. A full stack developer is a versatile professional who can work on all layers 
-                            of software development, from designing user interfaces to managing databases and server infrastructure.
-                        </p>
-                        
-                        <div class="interactive-demo">
-                            <h5><i class="fas fa-desktop"></i> Full Stack Architecture Visualization</h5>
-                            <div class="row text-center">
-                                <div class="col-md-4 mb-3">
-                                    <div class="p-3 bg-primary text-white rounded">
-                                        <i class="fas fa-eye fa-2x mb-2"></i>
-                                        <h6>Frontend</h6>
-                                        <small>User Interface & Experience</small>
-                                        <div class="mt-2">
-                                            <span class="badge bg-light text-dark me-1">HTML</span>
-                                            <span class="badge bg-light text-dark me-1">CSS</span>
-                                            <span class="badge bg-light text-dark">JavaScript</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="p-3 bg-success text-white rounded">
-                                        <i class="fas fa-server fa-2x mb-2"></i>
-                                        <h6>Backend</h6>
-                                        <small>Server Logic & APIs</small>
-                                        <div class="mt-2">
-                                            <span class="badge bg-light text-dark me-1">Node.js</span>
-                                            <span class="badge bg-light text-dark me-1">Python</span>
-                                            <span class="badge bg-light text-dark">PHP</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="p-3 bg-warning text-white rounded">
-                                        <i class="fas fa-database fa-2x mb-2"></i>
-                                        <h6>Database</h6>
-                                        <small>Data Storage & Management</small>
-                                        <div class="mt-2">
-                                            <span class="badge bg-light text-dark me-1">MySQL</span>
-                                            <span class="badge bg-light text-dark me-1">MongoDB</span>
-                                            <span class="badge bg-light text-dark">PostgreSQL</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Full Stack Development</h2>
+                    <p class="lead">Building complete web applications from frontend to backend</p>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-layer-group fa-3x text-primary mb-3"></i>
+                        <h3>What is Full Stack Development?</h3>
+                        <p>Full Stack Development encompasses both frontend and backend development, allowing developers to work on all aspects of web applications.</p>
+                    </div>
 
-                        <h5>Key Skills of a Full Stack Developer:</h5>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-check-circle text-success me-2"></i>Frontend Technologies (HTML, CSS, JavaScript)</li>
-                                    <li><i class="fas fa-check-circle text-success me-2"></i>Backend Technologies (Node.js, Python, Java)</li>
-                                    <li><i class="fas fa-check-circle text-success me-2"></i>Database Management (SQL, NoSQL)</li>
-                                </ul>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-paint-brush fa-2x text-primary mb-3"></i>
+                                    <h5>Frontend</h5>
+                                    <p>User Interface & Experience</p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-check-circle text-success me-2"></i>Version Control (Git)</li>
-                                    <li><i class="fas fa-check-circle text-success me-2"></i>DevOps & Deployment</li>
-                                    <li><i class="fas fa-check-circle text-success me-2"></i>API Development & Integration</li>
-                                </ul>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-server fa-2x text-primary mb-3"></i>
+                                    <h5>Backend</h5>
+                                    <p>Server Logic & APIs</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-database fa-2x text-primary mb-3"></i>
+                                    <h5>Database</h5>
+                                    <p>Data Storage & Management</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -538,90 +162,47 @@
     </section>
 
     <!-- HTML Section -->
-    <section id="html" class="section-padding bg-light">
+    <section id="html" class="py-5">
         <div class="container">
-            <div class="section-title">
-                <h2>HTML - HyperText Markup Language</h2>
-            </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="tech-card">
-                        <div class="card-icon">
-                            <i class="fab fa-html5"></i>
-                        </div>
-                        <h4>HTML Fundamentals</h4>
-                        <p>
-                            HTML (HyperText Markup Language) is the standard markup language for creating web pages. 
-                            It provides the basic structure and content of websites using elements and tags.
-                        </p>
-                        
-                        <h5>Key HTML Concepts:</h5>
-                        <ul>
-                            <li>Semantic HTML5 elements</li>
-                            <li>Document structure and hierarchy</li>
-                            <li>Forms and input handling</li>
-                            <li>Accessibility best practices</li>
-                            <li>Meta tags and SEO optimization</li>
-                        </ul>
-
-                        <div class="code-example">
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;My Portfolio&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Welcome to My Site&lt;/h1&gt;
-        &lt;nav&gt;
-            &lt;a href="#about"&gt;About&lt;/a&gt;
-            &lt;a href="#contact"&gt;Contact&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;section id="about"&gt;
-            &lt;h2&gt;About Me&lt;/h2&gt;
-            &lt;p&gt;I'm a full stack developer&lt;/p&gt;
-        &lt;/section&gt;
-    &lt;/main&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-                        </div>
-                    </div>
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">HTML Mastery</h2>
+                    <p class="lead">HyperText Markup Language - The foundation of web content</p>
                 </div>
-                <div class="col-lg-6">
-                    <div class="tech-card">
-                        <h4>Interactive HTML Demo</h4>
-                        <div class="interactive-demo">
-                            <div class="demo-controls mb-3">
-                                <button class="btn btn-primary btn-sm me-2" onclick="addElement('header')">Add Header</button>
-                                <button class="btn btn-success btn-sm me-2" onclick="addElement('paragraph')">Add Paragraph</button>
-                                <button class="btn btn-warning btn-sm me-2" onclick="addElement('list')">Add List</button>
-                                <button class="btn btn-danger btn-sm" onclick="clearDemo()">Clear</button>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-html5 fa-3x text-primary mb-3"></i>
+                        <h3>HTML Structure & Semantics</h3>
+                        <p>HTML provides the structural foundation for web content using semantic elements.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Element Generator</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Element Type:</label>
+                                <select id="elementType" class="form-select">
+                                    <option value="h1">Heading 1</option>
+                                    <option value="p">Paragraph</option>
+                                    <option value="button">Button</option>
+                                    <option value="div">Div Container</option>
+                                </select>
                             </div>
-                            <div id="htmlDemo" class="html-preview">
-                                <p><em>Click the buttons above to see HTML elements in action!</em></p>
+                            <div class="mb-3">
+                                <label class="form-label">Content:</label>
+                                <input type="text" id="elementContent" class="form-control" placeholder="Enter content">
+                            </div>
+                            <button class="btn btn-primary" onclick="generateElement()">Generate Element</button>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Preview:</h5>
+                            <div id="htmlPreview" class="border rounded p-3" style="min-height: 150px; background: rgba(255,255,255,0.05);">
+                                <!-- Generated elements appear here -->
                             </div>
                         </div>
-                        
-                        <h5>HTML Form Example:</h5>
-                        <form class="mt-3">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name:</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter your name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message:</label>
-                                <textarea class="form-control" id="message" rows="3" placeholder="Your message"></textarea>
-                            </div>
-                            <button type="button" class="btn btn-primary" onclick="showFormData()">Submit</button>
-                        </form>
-                        <div id="formResult" class="mt-3"></div>
                     </div>
                 </div>
             </div>
@@ -629,101 +210,41 @@
     </section>
 
     <!-- CSS Section -->
-    <section id="css" class="section-padding">
+    <section id="css" class="py-5">
         <div class="container">
-            <div class="section-title">
-                <h2>CSS - Cascading Style Sheets</h2>
-            </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="tech-card">
-                        <div class="card-icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-                        <h4>CSS Styling & Animation</h4>
-                        <p>
-                            CSS (Cascading Style Sheets) is used to style and layout web pages. It controls the 
-                            presentation, formatting, and visual appearance of HTML elements.
-                        </p>
-                        
-                        <div class="interactive-demo">
-                            <h5>CSS Animation Demo</h5>
-                            <div class="css-animation-box" id="animationBox" title="Click me!" onclick="toggleAnimation()"></div>
-                            <p class="text-center"><small>Click the box to see CSS animations!</small></p>
-                        </div>
-
-                        <h5>CSS Features Demonstrated:</h5>
-                        <ul>
-                            <li>Flexbox and Grid layouts</li>
-                            <li>CSS animations and transitions</li>
-                            <li>Responsive design principles</li>
-                            <li>Custom properties (CSS variables)</li>
-                            <li>Modern CSS techniques</li>
-                        </ul>
-
-                        <div class="code-example">
-/* CSS Animation Example */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-30px);
-    }
-    60% {
-        transform: translateY(-15px);
-    }
-}
-
-.animated-box {
-    width: 100px;
-    height: 100px;
-    background: #3498db;
-    animation: bounce 2s infinite;
-    transition: all 0.3s ease;
-}
-
-.animated-box:hover {
-    background: #e74c3c;
-    transform: scale(1.1);
-}
-                        </div>
-                    </div>
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">CSS Styling</h2>
+                    <p class="lead">Cascading Style Sheets - Bringing designs to life</p>
                 </div>
-                <div class="col-lg-6">
-                    <div class="tech-card">
-                        <h4>Dynamic Style Controller</h4>
-                        <div class="interactive-demo">
-                            <div class="demo-controls mb-3">
-                                <div class="mb-3">
-                                    <label class="form-label">Background Color:</label>
-                                    <input type="color" id="bgColor" value="#3498db" class="form-control form-control-color" onchange="updateStyles()">
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label class="form-label">Border Radius: <span id="radiusValue">10px</span></label>
-                                    <input type="range" id="borderRadius" min="0" max="50" value="10" class="form-range" oninput="updateStyles()">
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label class="form-label">Size: <span id="sizeValue">100px</span></label>
-                                    <input type="range" id="boxSize" min="50" max="200" value="100" class="form-range" oninput="updateStyles()">
-                                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-css3-alt fa-3x text-primary mb-3"></i>
+                        <h3>Advanced CSS Techniques</h3>
+                        <p>Modern CSS enables complex layouts, animations, and responsive designs.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Animation Controls</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Animation Type:</label>
+                                <select id="animationType" class="form-select" onchange="updateAnimation()">
+                                    <option value="bounce">Bounce</option>
+                                    <option value="rotate">Rotate</option>
+                                    <option value="pulse">Pulse</option>
+                                </select>
                             </div>
-                            
-                            <div id="styledBox" class="mx-auto" style="width: 100px; height: 100px; background: #3498db; border-radius: 10px; transition: all 0.3s ease;"></div>
+                            <div class="mb-3">
+                                <label class="form-label">Duration: <span id="durationValue">2s</span></label>
+                                <input type="range" id="animationDuration" min="1" max="5" value="2" class="form-range" oninput="updateAnimation()">
+                            </div>
                         </div>
-                        
-                        <h5>CSS Grid Layout Example:</h5>
-                        <div class="interactive-demo">
-                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px;">
-                                <div class="p-3 bg-primary text-white text-center rounded">1</div>
-                                <div class="p-3 bg-success text-white text-center rounded">2</div>
-                                <div class="p-3 bg-warning text-white text-center rounded">3</div>
-                                <div class="p-3 bg-danger text-white text-center rounded">4</div>
-                                <div class="p-3 bg-info text-white text-center rounded">5</div>
-                                <div class="p-3 bg-secondary text-white text-center rounded">6</div>
-                            </div>
+                        <div class="col-md-6 d-flex align-items-center justify-content-center">
+                            <div id="animationBox"></div>
                         </div>
                     </div>
                 </div>
@@ -732,53 +253,256 @@
     </section>
 
     <!-- Bootstrap Section -->
-    <section id="bootstrap" class="section-padding bg-light">
+    <section id="bootstrap" class="py-5">
         <div class="container">
-            <div class="section-title">
-                <h2>Bootstrap Framework</h2>
-            </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="tech-card">
-                        <div class="card-icon">
-                            <i class="fab fa-bootstrap"></i>
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Bootstrap Framework</h2>
+                    <p class="lead">Rapid prototyping with responsive components</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-bootstrap fa-3x text-primary mb-3"></i>
+                        <h3>Bootstrap Components</h3>
+                        <p>Bootstrap provides pre-built components for faster development.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Component Generator</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Component:</label>
+                                <select id="componentType" class="form-select" onchange="generateComponent()">
+                                    <option value="alert">Alert</option>
+                                    <option value="card">Card</option>
+                                    <option value="button">Button</option>
+                                    <option value="badge">Badge</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Style:</label>
+                                <select id="componentStyle" class="form-select" onchange="generateComponent()">
+                                    <option value="primary">Primary</option>
+                                    <option value="success">Success</option>
+                                    <option value="warning">Warning</option>
+                                    <option value="danger">Danger</option>
+                                </select>
+                            </div>
                         </div>
-                        <h4>Bootstrap - Responsive Web Framework</h4>
-                        <p>
-                            Bootstrap is a powerful front-end framework that provides pre-built CSS classes and JavaScript 
-                            components for creating responsive, mobile-first websites quickly and efficiently.
-                        </p>
-                        
-                        <div class="bootstrap-demo">
-                            <h5>Bootstrap Components Demo</h5>
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <div class="card h-100">
-                                        <div class="card-body">
-                                            <h6 class="card-title">Card Component</h6>
-                                            <p class="card-text">Bootstrap cards provide flexible content containers with multiple variants.</p>
-                                            <button class="btn btn-primary btn-sm">Learn More</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card h-100">
-                                        <div class="card-body">
-                                            <h6 class="card-title">Alert Component</h6>
-                                            <div class="alert alert-success alert-sm p-2 mb-2" role="alert">
-                                                <i class="fas fa-check-circle"></i> Success alert example!
-                                            </div>
-                                            <div class="alert alert-warning alert-sm p-2" role="alert">
-                                                <i class="fas fa-exclamation-triangle"></i> Warning alert!
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card h-100">
-                                        <div class="card-body">
-                                            <h6 class="card-title">Progress Bars</h6>
-                                            <div class="progress mb-2" style="height: 10px;">
-                                                <div class="progress-bar bg-success" style="width: 75%"></div>
-                                            </div>
-                                            <div class="progress mb
+                        <div class="col-md-6">
+                            <h5>Generated Component:</h5>
+                            <div id="componentPreview" class="border rounded p-3" style="min-height: 150px; background: rgba(255,255,255,0.05);">
+                                <!-- Generated components appear here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Section -->
+    <section id="javascript" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">JavaScript Programming</h2>
+                    <p class="lead">Dynamic functionality and interactive web experiences</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-js-square fa-3x text-primary mb-3"></i>
+                        <h3>Interactive Calculator</h3>
+                        <p>JavaScript enables dynamic interactions and complex logic.</p>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="calc-display d-flex align-items-center justify-content-end p-3 mb-3 rounded" id="calcDisplay">0</div>
+                            <div class="row g-2">
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="clearCalc()">C</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="deleteLast()">⌫</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputOperator('/')">/</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputOperator('*')">×</button></div>
+                                
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('7')">7</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('8')">8</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('9')">9</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputOperator('-')">-</button></div>
+                                
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('4')">4</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('5')">5</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('6')">6</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputOperator('+')">+</button></div>
+                                
+                                <div class="col-6"><button class="btn calc-btn w-100" onclick="inputNumber('0')">0</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('.')">.</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100 bg-primary" onclick="calculate()">=</button></div>
+                                
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('1')">1</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('2')">2</button></div>
+                                <div class="col-3"><button class="btn calc-btn w-100" onclick="inputNumber('3')">3</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // HTML Element Generator
+        function generateElement() {
+            const type = document.getElementById('elementType').value;
+            const content = document.getElementById('elementContent').value || 'Sample Content';
+            const preview = document.getElementById('htmlPreview');
+            
+            const element = document.createElement(type);
+            element.textContent = content;
+            element.style.cssText = 'margin: 0.5rem 0; padding: 0.5rem; background: rgba(99, 102, 241, 0.2); border-radius: 4px;';
+            
+            preview.appendChild(element);
+        }
+
+        // CSS Animation
+        function updateAnimation() {
+            const type = document.getElementById('animationType').value;
+            const duration = document.getElementById('animationDuration').value;
+            const box = document.getElementById('animationBox');
+            
+            document.getElementById('durationValue').textContent = duration + 's';
+            
+            box.style.animation = `${type} ${duration}s infinite`;
+        }
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                40% { transform: translateY(-30px); }
+                60% { transform: translateY(-15px); }
+            }
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Bootstrap Component Generator
+        function generateComponent() {
+            const type = document.getElementById('componentType').value;
+            const style = document.getElementById('componentStyle').value;
+            const preview = document.getElementById('componentPreview');
+            
+            let html = '';
+            
+            switch (type) {
+                case 'alert':
+                    html = `<div class="alert alert-${style}">This is a ${style} alert!</div>`;
+                    break;
+                case 'card':
+                    html = `<div class="card"><div class="card-body"><h5 class="card-title text-${style}">Card Title</h5><p class="card-text">This is a sample card component.</p></div></div>`;
+                    break;
+                case 'button':
+                    html = `<button class="btn btn-${style}">Sample Button</button>`;
+                    break;
+                case 'badge':
+                    html = `<span class="badge bg-${style}">Sample Badge</span>`;
+                    break;
+            }
+            
+            preview.innerHTML = html;
+        }
+
+        // Calculator
+        let calcDisplay = '0';
+        let calcPrevious = null;
+        let calcOperation = null;
+        let calcWaitingForOperand = false;
+
+        function updateCalcDisplay() {
+            document.getElementById('calcDisplay').textContent = calcDisplay;
+        }
+
+        function inputNumber(num) {
+            if (calcWaitingForOperand) {
+                calcDisplay = num;
+                calcWaitingForOperand = false;
+            } else {
+                calcDisplay = calcDisplay === '0' ? num : calcDisplay + num;
+            }
+            updateCalcDisplay();
+        }
+
+        function inputOperator(nextOperator) {
+            const inputValue = parseFloat(calcDisplay);
+
+            if (calcPrevious === null) {
+                calcPrevious = inputValue;
+            } else if (calcOperation) {
+                const result = performCalculation[calcOperation](calcPrevious, inputValue);
+                calcDisplay = String(result);
+                calcPrevious = result;
+                updateCalcDisplay();
+            }
+
+            calcWaitingForOperand = true;
+            calcOperation = nextOperator;
+        }
+
+        const performCalculation = {
+            '/': (prev, next) => prev / next,
+            '*': (prev, next) => prev * next,
+            '+': (prev, next) => prev + next,
+            '-': (prev, next) => prev - next,
+        };
+
+        function calculate() {
+            const inputValue = parseFloat(calcDisplay);
+
+            if (calcPrevious !== null && calcOperation) {
+                const result = performCalculation[calcOperation](calcPrevious, inputValue);
+                calcDisplay = String(result);
+                calcPrevious = null;
+                calcOperation = null;
+                calcWaitingForOperand = true;
+                updateCalcDisplay();
+            }
+        }
+
+        function clearCalc() {
+            calcDisplay = '0';
+            calcPrevious = null;
+            calcOperation = null;
+            calcWaitingForOperand = false;
+            updateCalcDisplay();
+        }
+
+        function deleteLast() {
+            calcDisplay = calcDisplay.length > 1 ? calcDisplay.slice(0, -1) : '0';
+            updateCalcDisplay();
+        }
+
+        // Initialize
+        updateAnimation();
+        generateComponent();
+        updateCalcDisplay();
+    </script>
+
+</body>
+</html>
